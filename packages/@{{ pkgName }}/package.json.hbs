@@ -1,0 +1,53 @@
+{
+  "name": "{{ pkgName }}",
+  "version": "0.0.1",
+  "description": "{{ description }}",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx ./src/index.ts",
+    "prepublishOnly": "pnpm test && pnpm build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "unpkg": "./dist/index.mjs",
+  {{#if_ne mode "node"}}
+  "jsdelivr": "dist/index.global.js",
+  {{/if_ne}}
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "devDependencies": {
+		"tsup": "^6.0.1",
+    "vitest": "^0.13.0"
+  },
+  "license": "MIT",
+    "repository": {
+    "type": "git",
+    "url": "git://github.com/{{ gitUser.username }}/{{ pkgName }}.git"
+  },
+  "homepage": "https://{{ gitUser.username }}.github.io/{{ pkgName }}",
+  "keywords": [
+    "{{ pkgName }}",
+    "{{ gitUser.name }}",
+    "{{ gitUser.username }}"
+  ],
+  "files": [
+    "dist" 
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "pnpm format"
+    }
+  },
+  "engines": {
+    "node": ">=10"
+  }
+}
