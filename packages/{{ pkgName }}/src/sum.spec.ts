@@ -1,3 +1,5 @@
+import { expect, it } from "vitest"
+
 import sum from "./sum"
 
 it("sum(1 + 1)", () => {
