@@ -10,7 +10,7 @@
     "moduleResolution": "node",
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
-    "types": [{{#if_ne mode "browser"}}"node", {{/if_eq}}"vitest/globals"],
+    "types": [{{#if_ne mode "browser"}}"node", {{/if_ne}}"vitest/globals"],
     "resolveJsonModule": true,
     {{#if_eq mode "node"}}
     "lib": [
